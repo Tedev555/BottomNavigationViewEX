@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        val textView = findViewById<TextView>(R.id.textView)
+//        val textView = findViewById<TextView>(R.id.textView)
 
 
 //        bottomNav.setOnNavigationItemSelectedListener( { item ->
@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setOnNavigationItemSelectedListener( { item ->
             when (item.itemId) {
-                R.id.action_home -> textView.text = "Home Page"
-                R.id.action_learn -> textView.text = "Learn Page"
-                R.id.action_profile -> textView.text = "Profile Page"
+//                R.id.action_home -> textView.text = "Home Page"
+//                R.id.action_learn -> textView.text = "Learn Page"
+//                R.id.action_profile -> textView.text = "Profile Page"
             }
             true
         })
