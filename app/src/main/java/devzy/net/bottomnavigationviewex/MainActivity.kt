@@ -3,11 +3,10 @@ package devzy.net.bottomnavigationviewex
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.view.MenuItem
-import android.support.annotation.NonNull
-import android.util.Log
-import android.widget.TextView
-
+import android.support.v4.app.Fragment
+import devzy.net.bottomnavigationviewex.fragments.FirstFragment
+import devzy.net.bottomnavigationviewex.fragments.SecondFragment
+import devzy.net.bottomnavigationviewex.fragments.ThirdFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,24 +14,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Blinding BottomNavigationView
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-//        val textView = findViewById<TextView>(R.id.textView)
-
-
-//        bottomNav.setOnNavigationItemSelectedListener( { item ->
-//            Log.e("Test Log : ", item.toString())
-//            true
-//        })
+        //By default fist time show FirstFragment
+        selectFragment(FirstFragment.newInstance())
 
         bottomNav.setOnNavigationItemSelectedListener( { item ->
             when (item.itemId) {
-//                R.id.action_home -> textView.text = "Home Page"
-//                R.id.action_learn -> textView.text = "Learn Page"
-//                R.id.action_profile -> textView.text = "Profile Page"
+                R.id.action_home -> selectFragment(FirstFragment.newInstance())
+                R.id.action_learn -> selectFragment(SecondFragment.newInstance())
+                R.id.action_profile -> selectFragment(ThirdFragment.newInstance())
             }
             true
         })
+    }
 
+    //Function to transaction fragment by use fragment from parameter
+    private fun selectFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()
     }
 }
